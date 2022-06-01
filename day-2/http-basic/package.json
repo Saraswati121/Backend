@@ -1,0 +1,16 @@
+{
+  "name": "http-basic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "is-even": "^1.0.0",
+    "nodemon": "^2.0.16"
+  }
+}
