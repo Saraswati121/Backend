@@ -29,30 +29,37 @@ app.post("/products",(req,res)=>{
        const parsed=JSON.parse(data);
        parsed.products=[...parsed.products, req.body];
 
-       fs.writeFile("./db.json",JSON.stringify(parsed),{encoding:"utf-8"},()=>{
+       fs.writeFile("./db.json",JSON.stringify(parsed),"utf-8",()=>{
            res.end("products here")
        })
    })
 })
 
 //delete product
-app.delete("/products/1",(req,res)=>{
+app.delete("/products/:id",(req,res)=>{
+
+    const {id} =req.params
     fs.readFile("./db.json", {encoding:"utf-8"},(err,data)=>{
         const parsed=JSON.parse(data);
-        parsed.products=parsed.products.filter(el => el.id !== 1);
+        parsed.products=parsed.products.filter(el => el.id !== id);
 
-        fs.writeFile("./db.json",JSON.stringify(parsed),{encoding:"utf-8"},()=>{
+        fs.writeFile("./db.json",JSON.stringify(parsed),"utf-8",()=>{
             res.end("products deleted")
         })
     })
 })
 
 //updated product 
-app.put("/products/1",(req,res)=>{
-    fs.readFile("./db.json", {encoding:"utf-8"},(err,data)=>{
-        
-    })
-})
+// app.put("/products/1",(req,res)=>{
+//     fs.readFile("./db.json", {encoding:"utf-8"},(err,data)=>{
+//         const parsed=JSON.parse(data);
+//         parsed.products=parsed.products.map(el => el.id !== "1");
+
+//         fs.writeFile("./db.json",JSON.stringify(parsed),"utf-8",()=>{
+//             res.end("products deleted")
+//         })
+//     })
+// })
 
 app.listen(8080,()=>{
     console.log("started on http://localhost:8080")
