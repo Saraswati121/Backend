@@ -1,5 +1,6 @@
 const express =require("express")
 const fs=require("fs")
+
 const app=express()
 
 app.use(express.urlencoded({extended:true}))
@@ -23,8 +24,21 @@ app.post("/",(req,res)=>{
 })
 
 
-app.put("/",(req,res)=>{
+app.put("/:id",(req,res)=>{
+    const {id} = req.params;
+    fs.readFile("./db.json","utf-8",(err,data)=>{
+        const parsed = JSON.parse(data);
+        parsed.todos.map((el)=>{
+            if(el.id==id){
+                el.status = req.body.status;
+            }
+        })
+        parsed.todos = [...parsed.todos];
 
+        fs.writeFile("./db.json",JSON.stringify(parsed),"utf-8",()=>{
+            res.send("Product Updated")
+        })
+    })
 })
 
 app.delete("/:id",(req,res)=>{
