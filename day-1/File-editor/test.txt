@@ -1,0 +1,2 @@
+With Gretel, developers can get started in minutes with open source reference examples and simple APIs for generating unlimited amounts of synthetic data, labeling personally identifiable information, or anonymizing and removing biases from data. Gretel services are controlled by a simple web-based interface and can be fully managed in the cloud or deployed on-premises.
+As new features become available we will be updating our API docs, FAQs, and tutorials so you can dive in on what's new!
