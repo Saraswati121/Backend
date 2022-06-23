@@ -1,4 +1,4 @@
-let [node,file,operation,file2,...args] = process.argv;
+let [operation,file2,...args] = process.argv.slice(2);
 const fs = require("fs");
 
 
