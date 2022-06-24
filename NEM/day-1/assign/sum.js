@@ -1,4 +1,5 @@
 let arg = process.argv.slice(2);
+const crypto = require("crypto");
 //console.log(process.argv)
 switch(arg[0]){
     case "add":{
@@ -8,6 +9,16 @@ switch(arg[0]){
         // }
          console.log(sum)
         return sum
+    }
+    case "sub":{
+        const sub = Number(process.argv[3])-Number(process.argv[4])
+         console.log(sub)
+        return sub
+    }
+    case "random":{
+        const random = crypto.randomInt(1,10)
+         console.log(random)
+        
     }
     default:{
         return "whatever"
