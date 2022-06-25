@@ -36,9 +36,20 @@ app.delete("/:id",(req,res)=>{
     })
 })
 
-app.put("/",(req,res)=>{
+app.put("/:id",(req,res)=>{
+    const {id}= req.params
     fs.readFile("./db.json","utf-8",(err,data)=>{
+        const parsed= JSON.parse(data)
+        parsed.list.map((el)=>{
+            if(el.id==id){
+                el.list= req.body.list
+            }
+        })
+        parsed.list = [...parsed.list];
         
+        fs.writeFile("./db.json",JSON.stringify(parsed),"utf-8",()=>{
+            res.end("list deleted")
+        })
     })
 })
 app.listen(8080,()=>{
